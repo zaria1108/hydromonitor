@@ -20,7 +20,7 @@ class DB:
         from urllib.request import  urlopen 
         from bson.objectid import ObjectId  
        
-      
+        print("DB_USERNAME =", Config.DB_USERNAME)
         self.Config                         = Config
         self.getcwd                         = getcwd
         self.join                           = join 

@@ -49,12 +49,10 @@
 
 
 // MQTT CLIENT CONFIG  
-const char *mqtt_server = "broker.emqx.io";
-static const char* pubtopic      = "620169689";                    // Add your ID number here
-static const char* subtopic[]    = {"620169689_sub","/elet2415"};  // Array of Topics(Strings) to subscribe to
-const char *mqtt_username = "emqx";
-const char *mqtt_password = "public";         // Public test broker
-static uint16_t mqtt_port        = 1883;
+static const char* pubtopic       = "620169689";                    // Add your ID number here
+static const char* subtopic[]     = {"620169689_sub","/elet2415"};  // Array of Topics(Strings) to subscribe to
+static const char* mqtt_server    = "www.yanacreations.com";                // Broker IP address or Domain name as a String 
+static uint16_t mqtt_port         = 1883;
 
 // WIFI CREDENTIALS
 const char* ssid       = "MonaConnect";     // Add your Wi-Fi ssid
@@ -171,6 +169,7 @@ void vUpdate( void * pvParameters )  {
    
           // 1. Read Humidity and save in variable below
           double h = dht.readHumidity();
+
            
           // 2. Read temperature as Celsius   and save in variable below
           double t = dht.readTemperature();    
