@@ -52,7 +52,7 @@ onMounted(()=>{
     Mqtt.connect(); // Connect to Broker located on the backend
     setTimeout( ()=>{
         // Subscribe to each topic
-        Mqtt.subscribe("620162206");
+        Mqtt.subscribe("620169689");
         // Mqtt.subscribe("topic2");
     },3000);
 });
@@ -71,7 +71,7 @@ watch(led,(controls)=>{
     ID = setTimeout(()=>{
         const message = JSON.stringify({"type":"controls","brightness":controls.brightness,"leds":controls.leds,"color":
         controls.color});
-        Mqtt.publish("620162206_sub",message); // Publish to a topic subscribed to by the hardware
+        Mqtt.publish("620169689_sub",message); // Publish to a topic subscribed to by the hardware
     },1000)
 })
 

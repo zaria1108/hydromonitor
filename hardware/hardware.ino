@@ -40,8 +40,8 @@
 #define ARDUINOJSON_USE_DOUBLE      1 
 #define NUM_LEDS 7
 
-#define DATA_PIN 27
-#define CLOCK_PIN 13
+#define DATA_PIN 5
+//#define CLOCK_PIN 13
 
 // DEFINE THE CONTROL PINS FOR THE DHT22
 #define DHTPIN 26
