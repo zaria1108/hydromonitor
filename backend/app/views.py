@@ -9,17 +9,7 @@ This file creates your application.
 import site 
 
 from app import app, Config,  mongo, Mqtt
-from flask import (
-    render_template,
-    request,
-    jsonify,
-    send_file,
-    redirect,
-    make_response,
-    send_from_directory,
-)
-from markupsafe import escape
-
+from flask import escape, render_template, request, jsonify, send_file, redirect, make_response, send_from_directory 
 from json import dumps, loads 
 from werkzeug.utils import secure_filename
 from datetime import datetime,timedelta, timezone
@@ -36,6 +26,27 @@ from math import floor
 #####################################
 
 @app.route('/api/climo/get/<start>/<end>', methods=['GET']) 
+def get_all(start,end):   
+    '''RETURNS ALL THE DATA FROM THE DATABASE THAT EXIST IN BETWEEN THE START AND END TIMESTAMPS'''
+   
+    if request.method == "GET":
+        '''Add your code here to complete this route'''
+        try:
+            START = escape(start)
+            END = escape(end)
+            data = mongo.getAllInRange(START, END)
+            if data:
+                return jsonify({"status":"found","data": data})
+            
+        except Exception as e:
+            print(f"get_data error: f{str(e)}")
+
+    # FILE DATA NOT EXIST
+    return jsonify({"status":"not found","data":[]})
+   
+
+
+@app.route('/api/mmar/temperature/<start>/<end>', methods=['GET']) 
 def get_temperature_mmar(start,end):   
     '''RETURNS MIN, MAX, AVG AND RANGE FOR TEMPERATURE. THAT FALLS WITHIN THE START AND END DATE RANGE'''
    
@@ -53,7 +64,9 @@ def get_temperature_mmar(start,end):
 
     # FILE DATA NOT EXIST
     return jsonify({"status":"not found","data":[]})
-   
+
+
+
 
 
 @app.route('/api/mmar/humidity/<start>/<end>', methods=['GET']) 
@@ -101,6 +114,24 @@ def get_freq_distro(variable,start,end):
 
 
 
+@app.route('/api/file/get/<filename>', methods=['GET']) 
+def get_images(filename):   
+    '''RETURNS REQUESTED FILE FROM UPLOADS FOLDER'''
+   
+    if request.method == "GET":
+        '''Add your code here to complete this route'''
+        directory   = join( getcwd(), Config.UPLOADS_FOLDER) 
+        filePath    = join( getcwd(), Config.UPLOADS_FOLDER, filename) 
+
+        # RETURN FILE IF IT EXISTS IN FOLDER
+        if exists(filePath):        
+            return send_from_directory(directory, filename)
+        
+        # FILE DOES NOT EXIST
+        return jsonify({"status":"file not found"}), 404
+
+
+
 @app.route('/api/file/upload',methods=["POST"])  
 def upload():
     '''SAVES A FILE TO THE UPLOADS FOLDER'''
@@ -140,6 +171,3 @@ def add_header(response):
 def page_not_found(error):
     """Custom 404 page."""    
     return jsonify({"status": 404}), 404
-
-
-
