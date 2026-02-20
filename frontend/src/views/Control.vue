@@ -1,26 +1,34 @@
 <template>
-    <VContainer align="center" fluid>
-        <VRow justify="center" style="max-width: 1200px;">
-            <VCol align="center">
-                <v-sheet class="mb-1 w-100 rounded-lg" style="max-width: 800;" color="surface">
+    <VContainer class="text-center" fluid>
+        <VRow justify="center" class="mx-auto" style="max-width: 1200px;">
+            
+            <VCol class="d-flex flex-column align-center">
+                
+                <v-sheet class="mb-1 w-100 rounded-lg" style="max-width: 800px;" color="surface">
                     <v-card class="text-secondary" title="LED Controls" color="surface" subtitle="Recent settings" variant="tonal" flat></v-card>
                 </v-sheet>
-                <v-sheet class="mb-1 w-100" style="max-width: 800;" color="surface">
+
+                <v-sheet class="mb-1 w-100" style="max-width: 800px;" color="surface">
                     <v-card class="pt-5" color="surface" variant="tonal">
-                        <v-slider class="pt-2 bg-surface" append-icon="mdi:mdi-car-light-high" density="compact" thumb-size="16" color="secondary" label="Brightness" min="0" max="250" step="10" show-ticks thumb-label="always" v-model="led.brightness"></v-slider>
+                        <v-slider class="pt-2 px-4 bg-surface" append-icon="mdi:mdi-car-light-high" density="compact" thumb-size="16" color="secondary" label="Brightness" min="0" max="250" step="10" show-ticks thumb-label="always" v-model="led.brightness"></v-slider>
                     </v-card>
                 </v-sheet>
-                <v-sheet class="mb-1 w-100" justify="center" style="max-width: 800;" color="surface">
+
+                <v-sheet class="mb-1 w-100" style="max-width: 800px;" color="surface">
                     <v-card class="pt-5" color="surface" variant="tonal">
-                        <v-slider class="pt-2 bg-surface" append-icon="mdi:mdi-led-on" density="compact" thumb-size="16" color="secondary" label="LED Nodes" min="1" max="7" step="1" show-ticks thumb-label="always" v-model="led.leds"></v-slider>
+                        <v-slider class="pt-2 px-4 bg-surface" append-icon="mdi:mdi-led-on" density="compact" thumb-size="16" color="secondary" label="LED Nodes" min="1" max="7" step="1" show-ticks thumb-label="always" v-model="led.leds"></v-slider>
                     </v-card>
                 </v-sheet>
-                <v-sheet class="mb-1 w-100 pa-2" justify="center" border style="max-width: 800;" color="surface">
-                    <v-progress-circular rotate="0" size="200" :width="15" :model-value="led.leds *15" :color="indicatorColor"><span class="text-onSurface font-weight-bold">{{ led.leds }} LED(s)</span></v-progress-circular>
+
+                <v-sheet class="mb-1 w-100 pa-2 d-flex justify-center" border style="max-width: 800px;" color="surface">
+                    <v-progress-circular rotate="0" size="200" :width="15" :model-value="led.leds * 15" :color="indicatorColor">
+                        <span class="text-onSurface font-weight-bold">{{ led.leds }} LED(s)</span>
+                    </v-progress-circular>
                 </v-sheet>
             </VCol>
-            <VCol align="center">
-                <v-color-picker v-model="led.color"></v-color-picker>
+
+            <VCol class="d-flex justify-center align-center">
+                <v-color-picker v-model="led.color" flat></v-color-picker>
             </VCol>
 
         </VRow>

@@ -1,39 +1,39 @@
-  <template>
-         <VToolbar flat density="compact" color="surface" height="100" >
-            <VContainer fluid>
-                    <VRow align="center" justify="center">
-                        <VCol cols="1" align="left" >
-                             
-                        </VCol>
+<template>
+  <VToolbar flat density="compact" color="surface" height="100">
+    <VContainer fluid>
+      <VRow class="align-center justify-center">
+        
+        <VCol cols="1" class="text-left">
+          </VCol>
 
-                        <VCol cols="10"  align="center"   > 
+        <VCol cols="10" class="text-center"> 
+          <RouterLink class="route" :to="{ name: 'Home' }">
+            <VBtn class="text-subtitle-2" density="compact" color="primary" :variant="(route.name == 'Home') ? 'tonal' : 'text'">Home</VBtn>
+          </RouterLink>
 
-                            <RouterLink class="route" :to="{ name: 'Home' }" >
-                                <VBtn class="text-subtitle-2"   density="compact"  color="primary" :variant="(route.name == 'Home')? 'tonal':'text'">Home</VBtn>
-                            </RouterLink>
+          <RouterLink class="route" :to="{ name: 'Control' }">
+            <VBtn class="text-subtitle-2" density="compact" color="primary" :variant="(route.name == 'Control') ? 'tonal' : 'text'">Control</VBtn>
+          </RouterLink>
 
-                            <!-- Add Links Below -->
-                            <RouterLink class="route" :to="{ name: 'Control' }" >
-                                <VBtn class="text-subtitle-2"   density="compact"  color="primary" :variant="(route.name == 'Control')? 'tonal':'text'">Control</VBtn>
-                            </RouterLink>
-                            <!-- <RouterLink class="route" :to="{ name: 'Live' }" >
-                                <VBtn class="text-subtitle-2"   density="compact"  color="primary" :variant="(route.name == 'Live')? 'tonal':'text'">Live</VBtn>
-                            </RouterLink>
-                            <RouterLink class="route" :to="{ name: 'Analysis' }" >
-                                <VBtn class="text-subtitle-2"   density="compact"  color="primary" :variant="(route.name == 'Analysis')? 'tonal':'text'">Analysis</VBtn>
-                            </RouterLink>                                   -->
+          <RouterLink class="route" :to="{ name: 'Live' }">
+            <VBtn class="text-subtitle-2" density="compact" color="primary" :variant="(route.name == 'Live') ? 'tonal' : 'text'">Live</VBtn>
+          </RouterLink>
 
-                        </VCol>
-                        <VCol cols="1" align="right">
-                            <VBtn size="x-small" :elevation="0"  icon @click="darkmode = !darkmode">                  
-                                <VIcon v-if="darkmode" icon="mdi:mdi-weather-night"   ></VIcon>
-                                <VIcon v-else  icon="mdi:mdi-white-balance-sunny"  ></VIcon>
-                            </VBtn>
-                        </VCol>
-                    </VRow>
-                </VContainer>
-            </VToolbar>
-  </template>
+          <RouterLink class="route" :to="{ name: 'Analysis' }">
+            <VBtn class="text-subtitle-2" density="compact" color="primary" :variant="(route.name == 'Analysis') ? 'tonal' : 'text'">Analysis</VBtn>
+          </RouterLink>
+        </VCol>
+
+        <VCol cols="1" class="text-right">
+          <VBtn size="x-small" :elevation="0" icon @click="darkmode = !darkmode">                  
+            <VIcon v-if="darkmode" icon="mdi:mdi-weather-night"></VIcon>
+            <VIcon v-else icon="mdi:mdi-white-balance-sunny"></VIcon>
+          </VBtn>
+        </VCol>
+      </VRow>
+    </VContainer>
+  </VToolbar>
+</template>
 
   
   <script setup>

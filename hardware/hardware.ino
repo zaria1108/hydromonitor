@@ -14,6 +14,7 @@
 #include "DHT.h"
 
 
+
 #ifndef _WIFI_H 
 #include <WiFi.h>
 #endif
@@ -41,7 +42,7 @@
 #define NUM_LEDS 7
 
 #define DATA_PIN 5
-//#define CLOCK_PIN 13
+#define CLOCK_PIN 13
 
 // DEFINE THE CONTROL PINS FOR THE DHT22
 #define DHTPIN 26
