@@ -1,5 +1,5 @@
 <template>
-    <v-container class="bg-light-blue d-flex flex-column align-center" fluid>
+    <v-container class="bg-white d-flex flex-column align-center" fluid>
         
         <v-row class="w-100" style="max-width: 1200px;" justify="center">
             <v-col cols="9">
@@ -11,19 +11,19 @@
             <v-col cols="3" class="d-flex flex-column">
                 <v-card class="mb-5" variant="flat" color="primaryContainer" subtitle="Temperature">
                     <v-card-item>
-                        <span class="text-h3 text-onPrimaryContainer">{{ temperature }}°C</span>
+                        <span class="text-h3 text-onPrimaryContainer">{{ temperature }}</span>
                     </v-card-item>
                 </v-card>
 
                 <v-card class="mb-5" variant="flat" color="tertiaryContainer" subtitle="Heat Index (Feels like)">
                     <v-card-item>
-                        <span class="text-h3 text-onTertiaryContainer">{{ heatindex }}°C</span>
+                        <span class="text-h3 text-onTertiaryContainer">{{ heatindex }}</span>
                     </v-card-item>
                 </v-card>
 
                 <v-card class="mb-5" variant="flat" color="secondaryContainer" subtitle="Humidity">
                     <v-card-item>
-                        <span class="text-h3 text-onSecondaryContainer">{{ humidity }}%</span>
+                        <span class="text-h3 text-onSecondaryContainer">{{ humidity }}</span>
                     </v-card-item>
                 </v-card>
             </v-col>
